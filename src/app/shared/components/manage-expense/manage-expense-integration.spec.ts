@@ -6,7 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
 import { of } from 'rxjs';
@@ -21,11 +21,11 @@ import { ManageExpenseData } from '../../interfaces/manage-expense-data';
 describe('RT-94 | ManageExpenseComponent | Integration | Tier: High', () => {
   let component: ManageExpenseComponent;
   let fixture: ComponentFixture<ManageExpenseComponent>;
-  let mockDatabaseService: jasmine.SpyObj<DatabaseService>;
-  let mockExpenseDataService: jasmine.SpyObj<ExpenseDataService>;
-  let mockUserService: jasmine.SpyObj<UserService>;
-  let mockSnackBar: jasmine.SpyObj<MatSnackBar>;
-  let mockDialogRef: jasmine.SpyObj<MatDialogRef<ManageExpenseComponent>>;
+  let mockDatabaseService: any;
+  let mockExpenseDataService: any;
+  let mockUserService: any;
+  let mockSnackBar: any;
+  let mockDialogRef: any;
 
   const mockExpense: Expense = {
     id: 'expense-int-1',
@@ -79,11 +79,11 @@ describe('RT-94 | ManageExpenseComponent | Integration | Tier: High', () => {
 
     fixture = TestBed.createComponent(ManageExpenseComponent);
     component = fixture.componentInstance;
-    mockDatabaseService = TestBed.inject(DatabaseService) as jasmine.SpyObj<DatabaseService>;
-    mockExpenseDataService = TestBed.inject(ExpenseDataService) as jasmine.SpyObj<ExpenseDataService>;
-    mockUserService = TestBed.inject(UserService) as jasmine.SpyObj<UserService>;
-    mockSnackBar = TestBed.inject(MatSnackBar) as jasmine.SpyObj<MatSnackBar>;
-    mockDialogRef = TestBed.inject(MatDialogRef) as jasmine.SpyObj<MatDialogRef<ManageExpenseComponent>>;
+    mockDatabaseService = TestBed.inject(DatabaseService);
+    mockExpenseDataService = TestBed.inject(ExpenseDataService);
+    mockUserService = TestBed.inject(UserService);
+    mockSnackBar = TestBed.inject(MatSnackBar);
+    mockDialogRef = TestBed.inject(MatDialogRef);
 
     mockUserService.getUserId.and.returnValue('user-integration');
     fixture.detectChanges();

@@ -21,11 +21,11 @@ import { ManageExpenseData } from '../../interfaces/manage-expense-data';
 describe('ManageExpenseComponent - Update Flow', () => {
   let component: ManageExpenseComponent;
   let fixture: ComponentFixture<ManageExpenseComponent>;
-  let mockDatabaseService: jasmine.SpyObj<DatabaseService>;
-  let mockExpenseDataService: jasmine.SpyObj<ExpenseDataService>;
-  let mockUserService: jasmine.SpyObj<UserService>;
-  let mockSnackBar: jasmine.SpyObj<MatSnackBar>;
-  let mockDialogRef: jasmine.SpyObj<MatDialogRef<ManageExpenseComponent>>;
+  let mockDatabaseService: any;
+  let mockExpenseDataService: any;
+  let mockUserService: any;
+  let mockSnackBar: any;
+  let mockDialogRef: any;
 
   const mockExpense: Expense = {
     id: 'expense-update-1',
@@ -79,11 +79,11 @@ describe('ManageExpenseComponent - Update Flow', () => {
 
     fixture = TestBed.createComponent(ManageExpenseComponent);
     component = fixture.componentInstance;
-    mockDatabaseService = TestBed.inject(DatabaseService) as jasmine.SpyObj<DatabaseService>;
-    mockExpenseDataService = TestBed.inject(ExpenseDataService) as jasmine.SpyObj<ExpenseDataService>;
-    mockUserService = TestBed.inject(UserService) as jasmine.SpyObj<UserService>;
-    mockSnackBar = TestBed.inject(MatSnackBar) as jasmine.SpyObj<MatSnackBar>;
-    mockDialogRef = TestBed.inject(MatDialogRef) as jasmine.SpyObj<MatDialogRef<ManageExpenseComponent>>;
+    mockDatabaseService = TestBed.inject(DatabaseService);
+    mockExpenseDataService = TestBed.inject(ExpenseDataService);
+    mockUserService = TestBed.inject(UserService);
+    mockSnackBar = TestBed.inject(MatSnackBar);
+    mockDialogRef = TestBed.inject(MatDialogRef);
 
     mockUserService.getUserId.and.returnValue('user-123');
     fixture.detectChanges();
@@ -292,8 +292,8 @@ describe('ManageExpenseComponent - Update Flow', () => {
 
       fixture = TestBed.createComponent(ManageExpenseComponent);
       component = fixture.componentInstance;
-      mockDatabaseService = TestBed.inject(DatabaseService) as jasmine.SpyObj<DatabaseService>;
-      mockDialogRef = TestBed.inject(MatDialogRef) as jasmine.SpyObj<MatDialogRef<ManageExpenseComponent>>;
+      mockDatabaseService = TestBed.inject(DatabaseService);
+      mockDialogRef = TestBed.inject(MatDialogRef);
       mockDatabaseService.updateExpense.and.returnValue(Promise.resolve());
       fixture.detectChanges();
       tick();

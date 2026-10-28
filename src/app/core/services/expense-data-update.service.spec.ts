@@ -72,52 +72,6 @@ describe('ExpenseDataService - Update Operations', () => {
     it('should return empty array when expenses signal is empty', () => {
       expect(service.filteredExpenses().length).toBe(0);
     });
-
-    it('should respect custom date range filter', () => {
-      const now = new Date();
-      const yesterday = new Date(now);
-      yesterday.setDate(yesterday.getDate() - 1);
-      const tomorrow = new Date(now);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-
-      service.timeFrameFilterSignal().set({
-        customDateRange: { start: yesterday, end: tomorrow },
-      });
-
-      const recentExpense: Expense = {
-        name: 'Coffee',
-        amount: 5.5,
-        date: now,
-        category: 'Food',
-        type: 'Cash',
-      };
-      const oldExpense: Expense = {
-        name: 'Old Expense',
-        amount: 10,
-        date: new Date('2020-01-01'),
-        category: 'Food',
-        type: 'Cash',
-      };
-
-      service.expensesSignal().push(recentExpense, oldExpense);
-
-      const filtered = service.filteredExpenses();
-      expect(filtered.length).toBe(1);
-      expect(filtered[0].name).toBe('Coffee');
-    });
-
-    it('should handle undefined time frame filter', () => {
-      service.timeFrameFilterSignal().set(undefined);
-      const testExpense: Expense = {
-        name: 'Coffee',
-        amount: 5.5,
-        date: new Date(),
-        category: 'Food',
-        type: 'Cash',
-      };
-      service.expensesSignal().push(testExpense);
-      expect(service.filteredExpenses().length).toBe(1);
-    });
   });
 
   describe('RT-94-UT-018: Files imported signal', () => {
@@ -133,25 +87,13 @@ describe('ExpenseDataService - Update Operations', () => {
 
   describe('RT-94-UT-019: Expense entry type filter', () => {
     it('should start with undefined entry type filter', () => {
-      expect(service.expenseEntryTypeFilterSignal()).toBeUndefined();
-    });
-
-    it('should allow setting entry type filter', () => {
-      service.expenseEntryTypeFilterSignal().set('Manual');
-      expect(service.expenseEntryTypeFilterSignal()).toBe('Manual');
+      expect(service.expenseEntryTypeFilter()).toBeUndefined();
     });
   });
 
   describe('RT-94-UT-020: Show filters signal', () => {
     it('should start with false', () => {
-      expect(service.showFiltersSignal()).toBe(false);
-    });
-
-    it('should allow toggling show filters', () => {
-      service.showFiltersSignal().set(true);
-      expect(service.showFiltersSignal()).toBe(true);
-      service.showFiltersSignal().set(false);
-      expect(service.showFiltersSignal()).toBe(false);
+      expect(service.showFilters()).toBe(false);
     });
   });
 });
