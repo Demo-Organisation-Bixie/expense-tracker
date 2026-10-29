@@ -19,7 +19,7 @@
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
     "@angular/core": "^21.2.0",
-    "@angular/fire": "^20.0.0",
+    "@angular/fire": "^21.0.0",
     "@angular/forms": "^21.2.0",
     "@angular/material": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
@@ -57,7 +57,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "prettier": "^3.4.2",
     "prettier-eslint": "^16.3.0",
-    "typescript": "~5.9.3",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.33.1"
   }
 }
