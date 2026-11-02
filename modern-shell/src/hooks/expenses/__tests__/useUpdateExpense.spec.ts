@@ -62,6 +62,7 @@ describe('RT-94 | useUpdateExpense | Unit | Tier: High', () => {
           amount: 7.5,
           date: '2024-03-15',
           category: 'Food',
+          type: 'Cash',
           comments: 'Updated',
         },
       });
@@ -75,6 +76,7 @@ describe('RT-94 | useUpdateExpense | Unit | Tier: High', () => {
         amount: 7.5,
         date: '2024-03-15',
         category: 'Food',
+        type: 'Cash',
         comments: 'Updated',
       }),
     );
@@ -93,6 +95,7 @@ describe('RT-94 | useUpdateExpense | Unit | Tier: High', () => {
           amount: 7.5,
           date: '2024-03-15',
           category: 'Food',
+          type: 'Cash',
         },
       });
     });
@@ -118,6 +121,7 @@ describe('RT-94 | useUpdateExpense | Unit | Tier: High', () => {
             amount: 7.5,
             date: '2024-03-15',
             category: 'Food',
+            type: 'Cash',
           },
         },
         { onError },
@@ -144,6 +148,7 @@ describe('RT-94 | useUpdateExpense | Unit | Tier: High', () => {
           amount: 7.5,
           date: '2024-03-15',
           category: 'Food',
+          type: 'Cash',
         },
       });
     });
@@ -164,6 +169,7 @@ describe('RT-94 | useUpdateExpense | Unit | Tier: High', () => {
           amount: 7.5,
           date: '2024-03-15',
           category: 'Food',
+          type: 'Cash',
         },
       });
     });
@@ -191,6 +197,7 @@ describe('RT-94 | useUpdateExpense | Unit | Tier: High', () => {
           amount: 5.5,
           date: '2024-03-15',
           category: 'Food',
+          type: 'Cash',
         },
       });
     });
@@ -220,6 +227,7 @@ describe('RT-94 | useUpdateExpense | Unit | Tier: High', () => {
           amount: 5.5,
           date: '2024-03-15',
           category: 'Food',
+          type: 'Cash',
         },
       });
     });

@@ -74,6 +74,7 @@ describe('RT-94 | React Update Flow | Integration | Tier: High', () => {
           amount: 7.5,
           date: '2024-03-15',
           category: 'Transport',
+          type: 'Manual',
           comments: 'Updated comment',
         });
       });
@@ -102,6 +103,7 @@ describe('RT-94 | React Update Flow | Integration | Tier: High', () => {
           amount: 2.0,
           date: '2024-04-01',
           category: 'Transport',
+          type: 'Cash',
           comments: '',
         });
       });
@@ -149,6 +151,7 @@ describe('RT-94 | React Update Flow | Integration | Tier: High', () => {
           amount: 15.5,
           date: '2024-03-15',
           category: 'Food',
+          type: 'Manual',
           comments: 'Morning coffee',
         });
       });

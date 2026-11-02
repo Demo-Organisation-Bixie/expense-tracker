@@ -7,6 +7,7 @@ describe('RT-94 | expenseSchema | Unit | Tier: High', () => {
     amount: 5.5,
     date: '2024-03-15',
     category: 'Food',
+    type: 'Cash',
     comments: 'Morning coffee',
   };
 
@@ -125,6 +126,35 @@ describe('RT-94 | expenseSchema | Unit | Tier: High', () => {
 
     it('should reject undefined category', () => {
       const result = expenseSchema.safeParse({ ...validData, category: undefined as any });
+      expect(result.success).toBe(false);
+    });
+  });
+
+  describe('RT-94-UT-021: Schema validates type field', () => {
+    it('should reject empty type string', () => {
+      const result = expenseSchema.safeParse({ ...validData, type: '' });
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        const typeError = result.error.issues.find((i) => i.path.includes('type'));
+        expect(typeError?.message).toBe('Type is required');
+      }
+    });
+
+    it('should accept valid type string', () => {
+      const result = expenseSchema.safeParse({ ...validData, type: 'Credit Card' });
+      expect(result.success).toBe(true);
+    });
+
+    it('should accept various type strings', () => {
+      const types = ['Cash', 'Card', 'Digital Wallet', 'PayPal', 'Bitcoin'];
+      for (const type of types) {
+        const result = expenseSchema.safeParse({ ...validData, type });
+        expect(result.success).toBe(true);
+      }
+    });
+
+    it('should reject undefined type', () => {
+      const result = expenseSchema.safeParse({ ...validData, type: undefined as any });
       expect(result.success).toBe(false);
     });
   });
