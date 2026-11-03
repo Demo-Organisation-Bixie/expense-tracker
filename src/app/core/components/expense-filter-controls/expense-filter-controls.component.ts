@@ -97,6 +97,13 @@ export class ExpenseFilterControlsComponent implements OnDestroy, OnInit {
     },
   ];
 
+  expenseTypes = [
+    { label: 'Credit', value: 'Credit' },
+    { label: 'Debit', value: 'Debit' },
+    { label: 'Cash', value: 'Cash' },
+  ];
+  selectedTypeFilter = new FormControl<string | undefined>(undefined);
+
   private dataService: ExpenseDataService = inject(ExpenseDataService);
   expenses = this.dataService.expensesSignal;
   showFilters = this.dataService.showFilters;
@@ -123,6 +130,12 @@ export class ExpenseFilterControlsComponent implements OnDestroy, OnInit {
     this.subscription.add(
       this.expenseEntryType.valueChanges.subscribe((value) =>
         this.dataService.setExpenseEntryTypeFilter(value as string | undefined),
+      ),
+    );
+
+    this.subscription.add(
+      this.selectedTypeFilter.valueChanges.subscribe((value) =>
+        this.dataService.setTypeFilter(value as string | undefined),
       ),
     );
   }

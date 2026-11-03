@@ -35,7 +35,7 @@ test.describe('End-to-End User Flows - Type Grouping', () => {
     await page.waitForLoadState('networkidle');
   }
 
-  test.describe('RT-96-E2E-001: Type field availability in expense form', () => {
+  test.describe('RT-97-E2E-001: Type field availability in expense form', () => {
     test('should display type field in log expense form', async ({ page }) => {
       await authenticate(page, ANGULAR_URL);
 
@@ -78,7 +78,7 @@ test.describe('End-to-End User Flows - Type Grouping', () => {
     });
   });
 
-  test.describe('RT-96-E2E-002: Type grouping display in dashboard', () => {
+  test.describe('RT-97-E2E-002: Type grouping display in dashboard', () => {
     test('should display type column in expense table', async ({ page }) => {
       await authenticate(page, ANGULAR_URL);
 
@@ -103,7 +103,7 @@ test.describe('End-to-End User Flows - Type Grouping', () => {
     });
   });
 
-  test.describe('RT-96-E2E-003: Type management in settings', () => {
+  test.describe('RT-97-E2E-003: Type management in settings', () => {
     test('should allow adding new expense type', async ({ page }) => {
       await authenticate(page, ANGULAR_URL);
 
@@ -151,7 +151,7 @@ test.describe('End-to-End User Flows - Type Grouping', () => {
     });
   });
 
-  test.describe('RT-96-E2E-004: Type filtering in dashboard', () => {
+  test.describe('RT-97-E2E-004: Type filtering in dashboard', () => {
     test('should filter expenses by type', async ({ page }) => {
       await authenticate(page, ANGULAR_URL);
 
@@ -193,7 +193,7 @@ test.describe('End-to-End User Flows - Type Grouping', () => {
     });
   });
 
-  test.describe('RT-96-E2E-005: Type in bulk edit operations', () => {
+  test.describe('RT-97-E2E-005: Type in bulk edit operations', () => {
     test('should allow bulk editing expense types', async ({ page }) => {
       await authenticate(page, ANGULAR_URL);
 
@@ -246,7 +246,7 @@ test.describe('End-to-End User Flows - Type Grouping', () => {
     });
   });
 
-  test.describe('RT-96-E2E-006: Type persistence across operations', () => {
+  test.describe('RT-97-E2E-006: Type persistence across operations', () => {
     test('should maintain type value after saving expense', async ({ page }) => {
       await authenticate(page, ANGULAR_URL);
 

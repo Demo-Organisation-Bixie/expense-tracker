@@ -11,7 +11,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     service = TestBed.inject(ExpenseDataService);
   });
 
-  describe('RT-96-UT-001: expenseSourcesSignal returns type values', () => {
+  describe('RT-97-UT-001: expenseSourcesSignal returns type values', () => {
     it('should return expense sources (types) signal', () => {
       const sources = service.expenseSourcesSignal();
       expect(sources).toBeDefined();
@@ -24,7 +24,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     });
   });
 
-  describe('RT-96-UT-002: categoriesSignal returns category values', () => {
+  describe('RT-97-UT-002: categoriesSignal returns category values', () => {
     it('should return categories signal', () => {
       const categories = service.categoriesSignal();
       expect(categories).toBeDefined();
@@ -37,7 +37,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     });
   });
 
-  describe('RT-96-UT-003: expensesSignal contains type field', () => {
+  describe('RT-97-UT-003: expensesSignal contains type field', () => {
     it('should return expenses signal', () => {
       const expenses = service.expensesSignal();
       expect(expenses).toBeDefined();
@@ -76,7 +76,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     });
   });
 
-  describe('RT-96-UT-004: filterExpensesByEntryType groups by manual vs imported', () => {
+  describe('RT-97-UT-004: filterExpensesByEntryType groups by manual vs imported', () => {
     it('should return all expenses when no entry type filter is set', () => {
       const testExpenses: Expense[] = [
         { name: 'Manual', date: new Date(), category: 'Groceries', type: 'Credit', amount: 10 },
@@ -117,7 +117,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     });
   });
 
-  describe('RT-96-UT-005: filteredExpenses computed signal', () => {
+  describe('RT-97-UT-005: filteredExpenses computed signal', () => {
     it('should return filtered expenses based on time frame', () => {
       const now = new Date();
       const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
@@ -145,7 +145,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     });
   });
 
-  describe('RT-96-UT-006: parseExpenseDate handles Date and string', () => {
+  describe('RT-97-UT-006: parseExpenseDate handles Date and string', () => {
     it('should parse Date objects', () => {
       const dateObj = new Date();
       const expense: Expense = { name: 'Test', date: dateObj, category: 'Groceries', type: 'Credit', amount: 10 };
@@ -163,7 +163,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     });
   });
 
-  describe('RT-96-UT-007: timeFrameFilterSignal controls filtering', () => {
+  describe('RT-97-UT-007: timeFrameFilterSignal controls filtering', () => {
     it('should return undefined by default', () => {
       const filter = service.timeFrameFilterSignal();
       expect(filter).toBeUndefined();
@@ -178,7 +178,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     });
   });
 
-  describe('RT-96-UT-008: filesImportedSignal tracks imported files', () => {
+  describe('RT-97-UT-008: filesImportedSignal tracks imported files', () => {
     it('should return empty array by default', () => {
       const files = service.filesImportedSignal();
       expect(files).toBeDefined();
@@ -193,7 +193,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     });
   });
 
-  describe('RT-96-UT-009: expenseEntryTypeFilter controls entry type display', () => {
+  describe('RT-97-UT-009: expenseEntryTypeFilter controls entry type display', () => {
     it('should return undefined by default', () => {
       const filter = service.expenseEntryTypeFilter();
       expect(filter).toBeUndefined();

@@ -75,7 +75,7 @@ describe('UIComponentInteractions - Type CRUD Flow', () => {
     fixture.detectChanges();
   });
 
-  describe('RT-96-IN-001: Type field in expense form UI', () => {
+  describe('RT-97-IN-001: Type field in expense form UI', () => {
     it('should have types array initialized', () => {
       expect(component.types).toBeDefined();
       expect(Array.isArray(component.types)).toBe(true);
@@ -100,7 +100,7 @@ describe('UIComponentInteractions - Type CRUD Flow', () => {
     });
   });
 
-  describe('RT-96-IN-002: Adding expense with type', () => {
+  describe('RT-97-IN-002: Adding expense with type', () => {
     it('should create expense with type field', () => {
       const expense: Expense = {
         name: 'New Expense',
@@ -134,7 +134,7 @@ describe('UIComponentInteractions - Type CRUD Flow', () => {
     });
   });
 
-  describe('RT-96-IN-003: Updating expense type', () => {
+  describe('RT-97-IN-003: Updating expense type', () => {
     it('should update expense type', () => {
       const expense: Expense = {
         name: 'Update Test',
@@ -171,7 +171,7 @@ describe('UIComponentInteractions - Type CRUD Flow', () => {
     });
   });
 
-  describe('RT-96-IN-004: Deleting expense with type', () => {
+  describe('RT-97-IN-004: Deleting expense with type', () => {
     it('should delete expense and show success message', fakeAsync(() => {
       const expense: Expense = {
         name: 'Delete Test',
@@ -213,7 +213,7 @@ describe('UIComponentInteractions - Type CRUD Flow', () => {
     }));
   });
 
-  describe('RT-96-IN-005: Adding custom types in preview mode', () => {
+  describe('RT-97-IN-005: Adding custom types in preview mode', () => {
     it('should add custom category when in preview mode', () => {
       const expense: Expense = {
         name: 'Custom Category',
@@ -277,7 +277,7 @@ describe('UIComponentInteractions - Type CRUD Flow', () => {
     });
   });
 
-  describe('RT-96-IN-006: Type field validation', () => {
+  describe('RT-97-IN-006: Type field validation', () => {
     it('should have valid type in expense object', () => {
       const expense: Expense = {
         name: 'Valid Type',

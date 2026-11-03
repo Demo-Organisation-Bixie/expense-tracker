@@ -75,7 +75,7 @@ describe('ExpenseSettingsAndManageOptions - Type Field in Expense Form', () => {
     fixture.detectChanges();
   });
 
-  describe('RT-96-UT-007: Type field availability in manage expense dialog', () => {
+  describe('RT-97-UT-007: Type field availability in manage expense dialog', () => {
     it('should initialize with default expense types', () => {
       expect(component.types).toBeDefined();
       expect(Array.isArray(component.types)).toBe(true);
@@ -93,7 +93,7 @@ describe('ExpenseSettingsAndManageOptions - Type Field in Expense Form', () => {
     });
   });
 
-  describe('RT-96-UT-008: Type field in expense form', () => {
+  describe('RT-97-UT-008: Type field in expense form', () => {
     it('should have expense object with type field', () => {
       const expense: Expense = {
         name: 'Test Expense',
@@ -143,7 +143,7 @@ describe('ExpenseSettingsAndManageOptions - Type Field in Expense Form', () => {
     });
   });
 
-  describe('RT-96-UT-009: Category and type management', () => {
+  describe('RT-97-UT-009: Category and type management', () => {
     it('should have categories populated from service', () => {
       expect(component.categories).toBeDefined();
       expect(Array.isArray(component.categories)).toBe(true);
@@ -187,7 +187,7 @@ describe('ExpenseSettingsAndManageOptions - Type Field in Expense Form', () => {
     });
   });
 
-  describe('RT-96-UT-010: Delete expense functionality', () => {
+  describe('RT-97-UT-010: Delete expense functionality', () => {
     it('should call deleteExpense on database service', fakeAsync(() => {
       const expense: Expense = {
         name: 'Delete Test',
@@ -226,7 +226,7 @@ describe('ExpenseSettingsAndManageOptions - Type Field in Expense Form', () => {
     }));
   });
 
-  describe('RT-96-UT-011: Update expense functionality', () => {
+  describe('RT-97-UT-011: Update expense functionality', () => {
     it('should call updateExpense on database service', fakeAsync(() => {
       const expense: Expense = {
         name: 'Update Test',

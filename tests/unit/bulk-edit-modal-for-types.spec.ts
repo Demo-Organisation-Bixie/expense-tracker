@@ -79,7 +79,7 @@ describe('BulkEditModalForTypes - Type Grouping in Expense List/Table', () => {
     fixture.detectChanges();
   });
 
-  describe('RT-96-UT-024: Type column in expense table', () => {
+  describe('RT-97-UT-024: Type column in expense table', () => {
     it('should display type column when editing by type', () => {
       expect(component.displayedColumns).toContain('type');
       expect(component.displayedColumns).toContain('name');
@@ -92,7 +92,7 @@ describe('BulkEditModalForTypes - Type Grouping in Expense List/Table', () => {
     });
   });
 
-  describe('RT-96-UT-025: Bulk edit by type', () => {
+  describe('RT-97-UT-025: Bulk edit by type', () => {
     it('should initialize edit form with type field', () => {
       expect(component.editForm).toBeDefined();
       expect(component.editForm.get('type')).toBeTruthy();
@@ -111,7 +111,7 @@ describe('BulkEditModalForTypes - Type Grouping in Expense List/Table', () => {
     });
   });
 
-  describe('RT-96-UT-026: Bulk update expense types', () => {
+  describe('RT-97-UT-026: Bulk update expense types', () => {
     it('should update type for selected expenses', fakeAsync(() => {
       component.editForm.get('type')?.setValue('Cash');
       mockDatabaseService.batchUpdateExpenses.and.returnValue(Promise.resolve());
@@ -132,7 +132,7 @@ describe('BulkEditModalForTypes - Type Grouping in Expense List/Table', () => {
     });
   });
 
-  describe('RT-96-UT-027: Category column when editing by category', () => {
+  describe('RT-97-UT-027: Category column when editing by category', () => {
     it('should display category column when editing by category', () => {
       const categoryData: BulkEditDialogData = {
         expenses: [
@@ -173,7 +173,7 @@ describe('BulkEditModalForTypes - Type Grouping in Expense List/Table', () => {
     });
   });
 
-  describe('RT-96-UT-028: Bulk delete with type grouping', () => {
+  describe('RT-97-UT-028: Bulk delete with type grouping', () => {
     it('should preview selected expenses for deletion', () => {
       component.bulkDelete();
 
@@ -191,7 +191,7 @@ describe('BulkEditModalForTypes - Type Grouping in Expense List/Table', () => {
     }));
   });
 
-  describe('RT-96-UT-029: Cancel bulk edit', () => {
+  describe('RT-97-UT-029: Cancel bulk edit', () => {
     it('should close dialog without changes', () => {
       component.onCancelClick();
 

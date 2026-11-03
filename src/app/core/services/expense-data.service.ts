@@ -15,11 +15,15 @@ export class ExpenseDataService {
   private readonly _timeFrameFilter = signal<TimeFrameFilter | undefined>(undefined);
   private readonly _filesImported = signal<string[]>([]);
   private readonly _expenseEntryTypeFilter = signal<string | undefined>(undefined);
+  private readonly _expenseTypesSignal = signal<string[]>(['Credit', 'Debit', 'Cash']);
+  private readonly _typeFilterSignal = signal<string | undefined>(undefined);
 
   readonly filteredExpenses = computed(() => {
     const timeFilter = this._timeFrameFilter();
     const entryTypeFilter = this._expenseEntryTypeFilter();
-    const expenses = this.filterExpensesByEntryType(this._expensesSignal(), entryTypeFilter);
+    const typeFilter = this._typeFilterSignal();
+    let expenses = this.filterExpensesByEntryType(this._expensesSignal(), entryTypeFilter);
+    expenses = this.filterByType(expenses, typeFilter);
 
     if (!timeFilter || !expenses.length) {
       return expenses;
@@ -58,6 +62,24 @@ export class ExpenseDataService {
     }
 
     return expenses.filter((expense) => expense?.importedOn);
+  }
+
+  private filterByType(expenses: Expense[], typeFilter: string | undefined): Expense[] {
+    if (!typeFilter) {
+      return expenses;
+    }
+    return expenses.filter((expense) => expense.type === typeFilter);
+  }
+
+  groupExpensesByType(expenses: Expense[]): Map<string, Expense[]> {
+    const grouped = new Map<string, Expense[]>();
+    for (const expense of expenses) {
+      const type = expense.type || 'Uncategorized';
+      const existing = grouped.get(type) || [];
+      existing.push(expense);
+      grouped.set(type, existing);
+    }
+    return grouped;
   }
 
   private filterByCustomDateRange(expenses: Expense[], timeFilter: TimeFrameFilter): Expense[] {
@@ -105,6 +127,10 @@ export class ExpenseDataService {
     return this._expenseEntryTypeFilter;
   }
 
+  get expenseTypesSignal(): WritableSignal<string[]> {
+    return this._expenseTypesSignal;
+  }
+
   get showFilters(): WritableSignal<boolean> {
     return this._showFilters;
   }
@@ -131,5 +157,9 @@ export class ExpenseDataService {
 
   setExpenseEntryTypeFilter(type: string | undefined) {
     this._expenseEntryTypeFilter.set(type);
+  }
+
+  setTypeFilter(type: string | undefined) {
+    this._typeFilterSignal.set(type);
   }
 }

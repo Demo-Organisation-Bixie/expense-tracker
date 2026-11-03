@@ -70,7 +70,7 @@ describe('DashboardGroupingByType - Type Grouping Display in Settings', () => {
     fixture.detectChanges();
   });
 
-  describe('RT-96-UT-012: Type grouping display in dashboard', () => {
+  describe('RT-97-UT-012: Type grouping display in dashboard', () => {
     it('should have displayColumns including type', () => {
       expect(component.displayColumns).toContain('type');
     });
@@ -85,7 +85,7 @@ describe('DashboardGroupingByType - Type Grouping Display in Settings', () => {
     });
   });
 
-  describe('RT-96-UT-013: Filter sources by type', () => {
+  describe('RT-97-UT-013: Filter sources by type', () => {
     it('should compute filter sources from expense data', () => {
       const testExpenses: Expense[] = [
         { name: 'Expense 1', date: new Date(), category: 'Groceries', type: 'Credit', amount: 100 },
@@ -127,7 +127,7 @@ describe('DashboardGroupingByType - Type Grouping Display in Settings', () => {
     });
   });
 
-  describe('RT-96-UT-014: Filter categories by type grouping', () => {
+  describe('RT-97-UT-014: Filter categories by type grouping', () => {
     it('should compute filter categories from expense data', () => {
       const testExpenses: Expense[] = [
         { name: 'Expense 1', date: new Date(), category: 'Groceries', type: 'Credit', amount: 100 },
@@ -161,7 +161,7 @@ describe('DashboardGroupingByType - Type Grouping Display in Settings', () => {
     });
   });
 
-  describe('RT-96-UT-015: Type-based filtering of data', () => {
+  describe('RT-97-UT-015: Type-based filtering of data', () => {
     it('should filter expenses by selected type filter', () => {
       const testExpenses: Expense[] = [
         { name: 'Expense 1', date: new Date(), category: 'A', type: 'Credit', amount: 10 },
@@ -214,7 +214,7 @@ describe('DashboardGroupingByType - Type Grouping Display in Settings', () => {
     });
   });
 
-  describe('RT-96-UT-016: Show/hide filters toggle', () => {
+  describe('RT-97-UT-016: Show/hide filters toggle', () => {
     it('should have showFilters signal', () => {
       expect(component.showFilters).toBeDefined();
     });
@@ -226,7 +226,7 @@ describe('DashboardGroupingByType - Type Grouping Display in Settings', () => {
     });
   });
 
-  describe('RT-96-UT-017: Selection model for bulk operations', () => {
+  describe('RT-97-UT-017: Selection model for bulk operations', () => {
     it('should have selection model initialized', () => {
       expect(component.selection).toBeDefined();
     });
