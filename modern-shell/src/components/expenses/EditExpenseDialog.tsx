@@ -21,6 +21,7 @@ export interface EditExpenseDialogProps {
   onClose: () => void;
   onSubmit: (expenseId: string, data: ExpenseFormData) => void;
   isSubmitting?: boolean;
+  types?: string[];
 }
 
 export function EditExpenseDialog({
@@ -42,6 +43,7 @@ export function EditExpenseDialog({
       amount: 0,
       date: '',
       category: undefined as unknown as ExpenseFormData['category'],
+      type: '',
       comments: '',
     },
   });
@@ -56,6 +58,7 @@ export function EditExpenseDialog({
             ? expense.date
             : expense.date.toISOString().split('T')[0],
         category: expense.category as ExpenseFormData['category'],
+        type: expense.type,
         comments: expense.comments ?? '',
       });
     }
@@ -163,6 +166,28 @@ export function EditExpenseDialog({
                 fullWidth
                 required
               />
+            )}
+          />
+
+          <Controller
+            name="type"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                value={field.value ?? ''}
+                select
+                label="Payment Type"
+                slotProps={{ htmlInput: { 'aria-label': 'Payment Type' } }}
+                error={!!errors.type}
+                helperText={errors.type?.message}
+                fullWidth
+                required
+              >
+                {(types ?? ['Cash', 'Card', 'Digital Wallet']).map((t) => (
+                  <MenuItem key={t} value={t}>{t}</MenuItem>
+                ))}
+              </TextField>
             )}
           />
 

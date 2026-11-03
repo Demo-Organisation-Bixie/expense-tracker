@@ -37,6 +37,7 @@ describe('EditExpenseDialog', () => {
     expect(screen.getByLabelText('Amount')).toHaveValue(5.5);
     expect(screen.getByLabelText('Date')).toHaveValue('2024-03-15');
     expect(screen.getByLabelText('Description')).toHaveValue('Coffee');
+    expect(screen.getByLabelText('Payment Type')).toHaveValue('Manual');
     expect(screen.getByLabelText('Comments')).toHaveValue('Morning coffee');
   });
 
@@ -81,6 +82,21 @@ describe('EditExpenseDialog', () => {
     expect(defaultProps.onSubmit).not.toHaveBeenCalled();
   });
 
+  it('should show validation error for empty payment type', async () => {
+    render(<EditExpenseDialog {...defaultProps} />);
+
+    const typeField = screen.getByLabelText('Payment Type');
+    fireEvent.change(typeField, { target: { value: '' } });
+
+    fireEvent.click(screen.getByText('Save'));
+
+    await waitFor(() => {
+      expect(screen.getByText('Type is required')).toBeInTheDocument();
+    });
+
+    expect(defaultProps.onSubmit).not.toHaveBeenCalled();
+  });
+
   it('should call onSubmit with expense ID and form data on valid submit', async () => {
     render(<EditExpenseDialog {...defaultProps} />);
 
@@ -95,6 +111,7 @@ describe('EditExpenseDialog', () => {
         amount: 5.5,
         date: '2024-03-15',
         category: 'Food',
+        type: 'Manual',
         comments: 'Morning coffee',
       });
     });

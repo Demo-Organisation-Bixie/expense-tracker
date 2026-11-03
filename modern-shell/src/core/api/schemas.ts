@@ -39,6 +39,7 @@ export const ExpenseFormSchema = z.object({
   category: z.enum(EXPENSE_CATEGORIES, {
     error: 'Please select a category',
   }),
+  type: z.string().min(1, 'Type is required'),
   comments: z.string().optional(),
 });
 

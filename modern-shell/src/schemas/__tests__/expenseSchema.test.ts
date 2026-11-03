@@ -7,6 +7,7 @@ describe('expenseSchema', () => {
     amount: 5.5,
     date: '2024-03-15',
     category: 'Food' as const,
+    type: 'Cash',
     comments: 'Morning coffee',
   };
 
@@ -88,6 +89,20 @@ describe('expenseSchema', () => {
 
   it('should accept empty string comments', () => {
     const result = expenseSchema.safeParse({ ...validData, comments: '' });
+    expect(result.success).toBe(true);
+  });
+
+  it('should reject empty type', () => {
+    const result = expenseSchema.safeParse({ ...validData, type: '' });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const typeError = result.error.issues.find((i) => i.path.includes('type'));
+      expect(typeError?.message).toBe('Type is required');
+    }
+  });
+
+  it('should accept valid type string', () => {
+    const result = expenseSchema.safeParse({ ...validData, type: 'Credit Card' });
     expect(result.success).toBe(true);
   });
 });
