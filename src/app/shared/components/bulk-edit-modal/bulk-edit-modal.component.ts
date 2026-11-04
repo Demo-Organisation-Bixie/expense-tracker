@@ -39,7 +39,7 @@ export class BulkEditModalComponent implements OnInit {
   private userService = inject(UserService);
   private expenseDataUpdate = effect(() => {
     this.categories = this.expenseDataService.categoriesSignal();
-    this.paymentTypes = this.expenseDataService.expenseSourcesSignal();
+    this.paymentTypes = this.expenseDataService.expenseTypesSignal();
   });
 
   constructor(

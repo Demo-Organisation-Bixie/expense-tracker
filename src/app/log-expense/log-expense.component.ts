@@ -51,7 +51,7 @@ export class LogExpenseComponent implements OnInit {
   private expenseDataService: ExpenseDataService = inject(ExpenseDataService);
   private expenseDataUpdate = effect(() => {
     this.categories = this.expenseDataService.categoriesSignal();
-    this.types = this.expenseDataService.expenseSourcesSignal();
+    this.types = this.expenseDataService.expenseTypesSignal();
   });
 
   constructor(
