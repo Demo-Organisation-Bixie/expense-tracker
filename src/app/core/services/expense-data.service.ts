@@ -162,4 +162,21 @@ export class ExpenseDataService {
   setTypeFilter(type: string | undefined) {
     this._typeFilterSignal.set(type);
   }
+
+  addExpenseType(type: string): void {
+    const current = this._expenseTypesSignal();
+    if (!current.includes(type)) {
+      this._expenseTypesSignal.set([...current, type]);
+    }
+  }
+
+  removeExpenseType(type: string): void {
+    const current = this._expenseTypesSignal();
+    this._expenseTypesSignal.set(current.filter((t) => t !== type));
+  }
+
+  updateExpenseType(oldType: string, newType: string): void {
+    const current = this._expenseTypesSignal();
+    this._expenseTypesSignal.set(current.map((t) => (t === oldType ? newType : t)));
+  }
 }
