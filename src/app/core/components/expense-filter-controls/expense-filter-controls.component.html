@@ -53,6 +53,15 @@
               }
             </mat-chip-listbox>
           }
+
+          <mat-label class="mb-3 font-weight-bold">Expense Type</mat-label>
+          <mat-chip-listbox [multiple]="true" [formControl]="selectedTypeFilter">
+            @for (type of expenseTypes; track type) {
+              <mat-chip-option [value]="type.value">
+                {{ type.label }}
+              </mat-chip-option>
+            }
+          </mat-chip-listbox>
         </mat-card-content>
       </mat-card>
     </div>

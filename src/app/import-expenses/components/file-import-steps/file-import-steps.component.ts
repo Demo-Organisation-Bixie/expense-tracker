@@ -102,7 +102,7 @@ export class FileImportStepsComponent implements OnInit {
       if (!this.expenseDataService.categoriesSignal().includes(expense.category)) {
         newCategories.add(expense.category);
       }
-      if (!this.expenseDataService.expenseSourcesSignal().includes(expense.type)) {
+      if (!this.expenseDataService.expenseTypesSignal().includes(expense.type)) {
         newTypes.add(expense.type);
       }
     });
@@ -116,7 +116,7 @@ export class FileImportStepsComponent implements OnInit {
     }
 
     if (newTypes.size > 0) {
-      types = [...this.expenseDataService.expenseSourcesSignal(), ...newTypes] as string[];
+      types = [...this.expenseDataService.expenseTypesSignal(), ...newTypes] as string[];
       updates.push(this.databaseService.saveNewExpenseSourceTypes(types, userId));
     }
 
