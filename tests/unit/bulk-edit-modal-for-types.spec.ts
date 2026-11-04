@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 
 import { BulkEditModalComponent } from '../../../../src/app/shared/components/bulk-edit-modal/bulk-edit-modal.component';
-import { Expense } from '../../../../src/app/core/interfaces/expense-model';
 import { ExpenseDataService } from '../../../../src/app/core/services/expense-data.service';
 import { DatabaseService } from '../../../../src/app/core/services/database.service';
 import { UserService } from '../../../../src/app/core/services/user.service';

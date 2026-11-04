@@ -187,8 +187,6 @@ describe('ExpenseTypeUpdate - Type Update Operations', () => {
     });
 
     it('should maintain signal identity after type update', () => {
-      const initialSignal = service.expenseTypesSignal();
-
       service.updateExpenseType('Cash', 'Bank Transfer');
 
       const finalSignal = service.expenseTypesSignal();

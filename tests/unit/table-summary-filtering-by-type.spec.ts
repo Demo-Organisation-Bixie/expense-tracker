@@ -201,7 +201,7 @@ describe('TableSummaryComponent - Type Grouping', () => {
       component.data.set(testExpenses1);
       fixture.detectChanges();
 
-      let sources1 = component.filterSources();
+      const sources1 = component.filterSources();
       expect(sources1).toContain('Credit');
       expect(sources1).not.toContain('Debit');
 
