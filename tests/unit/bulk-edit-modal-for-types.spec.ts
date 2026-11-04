@@ -35,7 +35,7 @@ describe('BulkEditModalForTypes - Type Grouping in Expense List/Table', () => {
   beforeEach(fakeAsync(() => {
     mockExpenseDataService = jasmine.createSpyObj('ExpenseDataService', [], {
       categoriesSignal: jasmine.createSpy().and.returnValue(['Groceries', 'Food', 'Transport']),
-      expenseSourcesSignal: jasmine.createSpy().and.returnValue(['Credit', 'Debit', 'Cash']),
+      expenseTypesSignal: jasmine.createSpy().and.returnValue(['Credit', 'Debit', 'Cash']),
     });
 
     mockDatabaseService = jasmine.createSpyObj('DatabaseService', ['batchUpdateExpenses'], {

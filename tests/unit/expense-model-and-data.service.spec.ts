@@ -15,14 +15,14 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     it('should return expense types signal', () => {
       const types = service.expenseTypesSignal();
       expect(types).toBeDefined();
-      expect(Array.isArray(types)).toBe(true);
+      expect(Array.isArray(types())).toBe(true);
     });
 
     it('should return default expense types', () => {
       const types = service.expenseTypesSignal();
-      expect(types).toContain('Credit');
-      expect(types).toContain('Debit');
-      expect(types).toContain('Cash');
+      expect(types()).toContain('Credit');
+      expect(types()).toContain('Debit');
+      expect(types()).toContain('Cash');
     });
   });
 
@@ -30,12 +30,12 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     it('should return categories signal', () => {
       const categories = service.categoriesSignal();
       expect(categories).toBeDefined();
-      expect(Array.isArray(categories)).toBe(true);
+      expect(Array.isArray(categories())).toBe(true);
     });
 
     it('should return empty array by default', () => {
       const categories = service.categoriesSignal();
-      expect(categories.length).toBe(0);
+      expect(categories().length).toBe(0);
     });
   });
 
@@ -43,12 +43,12 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
     it('should return expenses signal', () => {
       const expenses = service.expensesSignal();
       expect(expenses).toBeDefined();
-      expect(Array.isArray(expenses)).toBe(true);
+      expect(Array.isArray(expenses())).toBe(true);
     });
 
     it('should return empty array by default', () => {
       const expenses = service.expensesSignal();
-      expect(expenses.length).toBe(0);
+      expect(expenses().length).toBe(0);
     });
 
     it('should allow setting expenses with type field', () => {
@@ -72,9 +72,9 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
       service.expensesSignal().set(testExpenses);
       const retrieved = service.expensesSignal();
 
-      expect(retrieved.length).toBe(2);
-      expect(retrieved[0].type).toBe('Credit');
-      expect(retrieved[1].type).toBe('Debit');
+      expect(retrieved().length).toBe(2);
+      expect(retrieved()[0].type).toBe('Credit');
+      expect(retrieved()[1].type).toBe('Debit');
     });
   });
 
@@ -246,13 +246,13 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
   describe('RT-97-UT-013: addExpenseType adds new type', () => {
     it('should add a new expense type to the signal', () => {
       const initialTypes = service.expenseTypesSignal();
-      expect(initialTypes).toContain('Credit');
+      expect(initialTypes()).toContain('Credit');
 
       service.addExpenseType('PayPal');
       const updatedTypes = service.expenseTypesSignal();
 
-      expect(updatedTypes).toContain('PayPal');
-      expect(updatedTypes.length).toBeGreaterThan(initialTypes.length);
+      expect(updatedTypes()).toContain('PayPal');
+      expect(updatedTypes().length).toBeGreaterThan(initialTypes().length);
     });
 
     it('should not add duplicate types', () => {
@@ -262,8 +262,8 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
       service.addExpenseType('Credit');
       const updatedTypes = service.expenseTypesSignal();
 
-      expect(updatedTypes.length).toBe(initialLength);
-      expect(updatedTypes).toContain('Credit');
+      expect(updatedTypes().length).toBe(initialLength);
+      expect(updatedTypes()).toContain('Credit');
     });
   });
 
@@ -275,7 +275,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
       service.removeExpenseType('PayPal');
       const updatedTypes = service.expenseTypesSignal();
 
-      expect(updatedTypes).not.toContain('PayPal');
+      expect(updatedTypes()).not.toContain('PayPal');
     });
 
     it('should not affect other types when removing', () => {
@@ -283,9 +283,9 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
       service.removeExpenseType('PayPal');
 
       const updatedTypes = service.expenseTypesSignal();
-      expect(updatedTypes).toContain('Credit');
-      expect(updatedTypes).toContain('Debit');
-      expect(updatedTypes).toContain('Cash');
+      expect(updatedTypes()).toContain('Credit');
+      expect(updatedTypes()).toContain('Debit');
+      expect(updatedTypes()).toContain('Cash');
     });
 
     it('should handle removing non-existent type gracefully', () => {
@@ -293,7 +293,7 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
       service.removeExpenseType('NonExistent');
       const updatedTypes = service.expenseTypesSignal();
 
-      expect(updatedTypes.length).toBe(initialTypes.length);
+      expect(updatedTypes().length).toBe(initialTypes().length);
     });
   });
 
@@ -302,18 +302,18 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
       service.updateExpenseType('Cash', 'Bank Transfer');
       const updatedTypes = service.expenseTypesSignal();
 
-      expect(updatedTypes).not.toContain('Cash');
-      expect(updatedTypes).toContain('Bank Transfer');
-      expect(updatedTypes).toContain('Credit');
-      expect(updatedTypes).toContain('Debit');
+      expect(updatedTypes()).not.toContain('Cash');
+      expect(updatedTypes()).toContain('Bank Transfer');
+      expect(updatedTypes()).toContain('Credit');
+      expect(updatedTypes()).toContain('Debit');
     });
 
     it('should not affect other types when updating', () => {
       service.updateExpenseType('Cash', 'Bank Transfer');
       const updatedTypes = service.expenseTypesSignal();
 
-      expect(updatedTypes).toContain('Credit');
-      expect(updatedTypes).toContain('Debit');
+      expect(updatedTypes()).toContain('Credit');
+      expect(updatedTypes()).toContain('Debit');
     });
 
     it('should handle updating non-existent type gracefully', () => {
@@ -321,8 +321,8 @@ describe('ExpenseModelAndDataService - Type Grouping Logic', () => {
       service.updateExpenseType('NonExistent', 'NewType');
       const updatedTypes = service.expenseTypesSignal();
 
-      expect(updatedTypes.length).toBe(initialTypes.length);
-      expect(updatedTypes).toContain('Credit');
+      expect(updatedTypes().length).toBe(initialTypes.length);
+      expect(updatedTypes()).toContain('Credit');
     });
   });
 

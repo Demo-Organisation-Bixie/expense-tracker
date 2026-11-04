@@ -46,7 +46,7 @@ export class ManageExpenseComponent implements OnInit {
 
   private expenseDataUpdate = effect(() => {
     this.categories = this.dataService.categoriesSignal();
-    this.types = this.dataService.expenseSourcesSignal();
+    this.types = this.dataService.expenseTypesSignal();
   });
 
   constructor(

@@ -29,7 +29,7 @@ describe('ExpenseSettingsAndManageOptions - Type Field in Expense Form', () => {
   beforeEach(fakeAsync(() => {
     mockExpenseDataService = jasmine.createSpyObj('ExpenseDataService', [], {
       categoriesSignal: jasmine.createSpy().and.returnValue(defaultExpenseCategories),
-      expenseSourcesSignal: jasmine.createSpy().and.returnValue(defaultExpenseTypes),
+      expenseTypesSignal: jasmine.createSpy().and.returnValue(defaultExpenseTypes),
     });
 
     mockDatabaseService = jasmine.createSpyObj('DatabaseService', ['deleteExpense', 'saveNewExpense', 'updateExpense'], {

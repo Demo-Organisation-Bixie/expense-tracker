@@ -30,7 +30,7 @@ describe('DashboardGroupingByType - Type Grouping Display in Settings', () => {
   beforeEach(fakeAsync(() => {
     mockExpenseDataService = jasmine.createSpyObj('ExpenseDataService', [], {
       categoriesSignal: jasmine.createSpy().and.returnValue(['Groceries', 'Transportation', 'Entertainment']),
-      expenseSourcesSignal: jasmine.createSpy().and.returnValue(['Credit', 'Debit', 'Cash']),
+      expenseTypesSignal: jasmine.createSpy().and.returnValue(['Credit', 'Debit', 'Cash']),
     });
 
     mockDialog = jasmine.createSpyObj('MatDialog', ['open']);
